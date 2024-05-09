@@ -4,4 +4,4 @@ __pycache__/
 venv/
 *.env
 *.log
-/arquivos
+*/arquivos
