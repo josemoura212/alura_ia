@@ -1,6 +1,7 @@
 import os
 import textwrap
 from IPython.display import display,Markdown
+from termcolor import colored
 
 def to_markdown(text):
     text = text.replace("º", "*")
@@ -15,7 +16,7 @@ def clean_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu_options():
-    print("1 - Iniciar conversa")
+    print(colored("1 - Iniciar conversa","magenta"))
     print("2 - Transcrever audio")
     print("3 - Traduzir arquivos")
     print("4 - Sair")
