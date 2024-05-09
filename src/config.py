@@ -9,10 +9,13 @@ def init_gemini():
     print("Modelos disponíveis para geração de conteúdo:")
     for m in genai.list_models():
         if 'generateContent' in m.supported_generation_methods:
-            print(m.name)
+            model = m.name.split("/")[1]
+            print(model)
 
     print("Selecione um modelo para geração de conteúdo:")
     selected_model = input()
+
+    print(selected_model)
 
     generation_config = {
       "candidate_count": 1,  
@@ -28,11 +31,10 @@ def init_gemini():
         "DANGEROUS" : "BLOCK_NONE",
     }
     
-    model = genai.GenerativeModel(selected_model,
+    model = genai.GenerativeModel(model_name=selected_model,
                                   generation_config=generation_config,
                                   safety_settings=safety_settings)
     
-    clean_screen()
     return model
 
 

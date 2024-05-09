@@ -1,12 +1,9 @@
 from config import init_gemini
 from termcolor import colored
-from ui import menu_options
 
 model = init_gemini()
 
 chat = model.start_chat(history=[])
-
-option = menu_options()
 
 while True:
     user_input = input(colored("Pergunta: ","blue"))
@@ -16,6 +13,3 @@ while True:
     print(colored("\nBot: Processando...","green"))
     response = chat.send_message(user_input)
     print("\nBot:", response.text)
-
-
-print(colored("\nSessão encerrada!","red"))

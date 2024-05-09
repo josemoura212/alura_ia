@@ -10,9 +10,16 @@ Copiei o código abaixo e cole no terminal do PowerShell.
 
 [Acesse o Google API Key](https://aistudio.google.com/app/apikey/?utm_content=)
 
-## Install
+## Preparação do ambiente
+Configure o ambiente virtual com o comando abaixo.
+```python -m venv venv```
+
+Ative o ambiente virtual com o comando abaixo.
+* Windows : ```venv\Scripts\Activate```
+* Linux : ```source venv/bin/activate```
+
+Instale as dependências do projeto com o comando abaixo.
 ```pip install -r requirements.txt```
 
-
-## Run
+## Iniciar o projeto
 ```python src/main.py```
