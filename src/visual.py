@@ -9,5 +9,3 @@ def print_history(message,chat):
     for message in chat.history:
         display(to_markdown(f"**{message.role}** : {message.parts[0].text}"))
         print("--------------------------------------------")
-
-

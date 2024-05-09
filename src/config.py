@@ -1,6 +1,7 @@
 import google.generativeai as genai
 import os
 
+from ui import clean_screen
 
 def init_gemini():
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
@@ -31,6 +32,7 @@ def init_gemini():
                                   generation_config=generation_config,
                                   safety_settings=safety_settings)
     
+    clean_screen()
     return model
 
 

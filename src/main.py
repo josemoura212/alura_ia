@@ -1,14 +1,12 @@
-import google.generativeai as genai
-import os
-from ui import clean_screen
 from config import init_gemini
 from termcolor import colored
+from ui import menu_options
 
 model = init_gemini()
 
 chat = model.start_chat(history=[])
 
-clean_screen()
+option = menu_options()
 
 while True:
     user_input = input(colored("Pergunta: ","blue"))
