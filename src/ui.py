@@ -16,10 +16,10 @@ def clean_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu_options():
-    print(colored("1 - Iniciar conversa","magenta"))
-    print("2 - Transcrever audio")
-    print("3 - Traduzir arquivos")
-    print("4 - Sair")
+    print(colored("1 - Iniciar conversa","green"))
+    print(colored("2 - Transcrever audio","red"))
+    print(colored("3 - Traduzir arquivos","red"))
+    print(colored("4 - Sair","red"))
     print("Selecione uma opção:")
     selected_option = input()
     clean_screen()
