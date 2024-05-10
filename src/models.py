@@ -24,8 +24,10 @@ def chat_model():
                 if not file:
                     print(colored("\nBot: Nenhum arquivo selecionado.","red"))
                     continue
-                path = file.split(".")
-                extension = path[-1]
+                if file.split(".")[-1] not in ["mp3","wav","ogg"]:
+                    print(colored("\nBot: Formato de arquivo não suportado.","red"))
+                    continue
+                extension = file.split(".")[-1]
                 audio = AudioSegment.from_file(file, extension)
                 print(colored("\nArquivo: Processando...","green"))
 
