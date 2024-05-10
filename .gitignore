@@ -5,3 +5,7 @@ venv/
 *.env
 *.log
 */arquivos
+*.txt
+*.wav
+*.mp3
+*.ogg
