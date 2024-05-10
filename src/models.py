@@ -1,4 +1,3 @@
-import os
 from termcolor import colored
 from pydub.utils import make_chunks
 from config import init_gemini
