@@ -1,15 +1,14 @@
 import os
 from termcolor import colored
 from pydub.utils import make_chunks
-
 from config import init_gemini
 from pydub import AudioSegment
 import speech_recognition as sr
 
-BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-AUDIO_PATH = BASE_PATH + "\\arquivos\\audio.ogg"
+from file_picker import open_file_selection
+
 def chat_model():
-    special_input = ["sair","limpar","comandos","ajuda","audio"]
+    special_input = ["sair","limpar","comandos","ajuda","audio","teste"]
 
     model = init_gemini()
 
@@ -21,7 +20,14 @@ def chat_model():
                 print(colored("\nBot: Até mais!","red"))
                 break
             elif user_input.lower() == "audio":
-                audio = AudioSegment.from_file(AUDIO_PATH, "ogg")
+                file = open_file_selection()
+                if not file:
+                    print(colored("\nBot: Nenhum arquivo selecionado.","red"))
+                    continue
+                path = file.split(".")
+                extension = path[-1]
+                audio = AudioSegment.from_file(file, extension)
+                print(colored("\nArquivo: Processando...","green"))
 
                 size = 240000 # o milisegundo para cortar o audio no maximo 3 min
 
@@ -30,7 +36,7 @@ def chat_model():
                 for i, chunk in enumerate(chunks):
                    # Enumeration, i is the index, chunk is the cut file
                    # convert mp3 file to wav
-                   chunk_name = "audio{0}.wav".format(i)
+                   chunk_name = "./src/arquivos/audio{0}.wav".format(i)
                    # save document
                    chunk.export(chunk_name, format="wav")
                    file_audio = sr.AudioFile("./" + chunk_name)
@@ -56,10 +62,12 @@ def chat_model():
             elif user_input.lower() == "comandos":
                 for command in special_input:
                     print(colored(command,"green"))
+                continue
             elif user_input.lower() == "ajuda":
                 print(colored("\nBot: Digite 'sair' para encerrar a conversa.","green"))
                 print(colored("Bot: Digite 'limpar' para limpar o historico.","green"))
                 print(colored("Bot: Digite 'comandos' para ver os comandos disponíveis.","green"))
+                continue
         print("\nSua Pergunta:",user_input)
         print(colored("\nBot: Processando...","green"))
         response = chat.send_message(user_input)

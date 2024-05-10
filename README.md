@@ -23,3 +23,8 @@ Instale as dependências do projeto com o comando abaixo.
 
 ## Iniciar o projeto
 ```python src/main.py```
+
+
+# Descrição
+
+Projeto desenvolvido durante a Imersão Alura/Google IA, com o objetivo de criar um sistema com opção de chat e para transcrição de audio para o gemini e fazer qualquer coisa referente ao audio.
